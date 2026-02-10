@@ -15,7 +15,8 @@
         "phpmailer/phpmailer": "^6.10",
         "mongodb/mongodb": "^2.1",
         "mlocati/ip-lib": "^1.20",
-        "dragonmantank/cron-expression": "^3.4"
+        "dragonmantank/cron-expression": "^3.4",
+        "fakerphp/faker": "*"
     },
     "extra": {
         "foxy": true

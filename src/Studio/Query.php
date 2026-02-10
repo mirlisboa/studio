@@ -1,9 +1,9 @@
 <?php
 /**
  * Form Field building, validation and output methods
- * 
+ *
  * This package implements applications to build HTML forms
- * 
+ *
  * PHP version 8.3+
  *
  * @package   capile/studio
@@ -222,6 +222,61 @@ class Query extends SchemaObject
         }
     }
 
+    public static function createFactory($options = null)
+    {
+        S::$log = 1;
+        if (!$options && S_CLI) {
+            $options = [
+                'folder' => S::getApp()->config('api', 'factory-dir') ?: S_PROJECT_ROOT . '/seeders'
+            ];
+
+            $args = App::request('argv');
+            foreach ($args as $arg) {
+                if (preg_match('/^\-\-([a-zA-Z0-9_-]+)=(.+)$/', $arg, $m)) {
+                    $options[$m[1]] = $m[2];
+                } else if (preg_match('/^-(v+)$/', $arg, $m)) {
+                    S::$log = strlen($m[1]);
+                }
+            }
+
+            if (!is_dir($options['folder'])) {
+                S::log('[WARNING] ' . $options['folder'] . ' does not exist');
+                return;
+            }
+        }
+        S::log('OPTIONS', $options);
+        $files = $files = array_merge(
+            glob($options['folder'] . '/*.yml') ?: [],
+            glob($options['folder'] . '/*.yaml') ?: []
+        );
+
+        foreach ($files as $file) {
+            $data = [];
+            $importData = [];
+            $data = S::unserialize(file_get_contents($file), 'yaml');
+            S::log('---Processing file: ' . $file);
+            if (!is_array($data)) {
+                S::log("[WARNING] Can't migrate: {$file}");
+                continue;
+            } else {
+                if (Factory::isValidFactory($data)) {
+                    $factory = new Factory($data, true);
+                    $importData = $factory->generateData();
+                } else {
+                    $importData = $data;
+                }
+
+                if ($importData !== null) {
+                    self::import($importData);
+                } else {
+                    S::log("[WARNING] No data to import from: {$file}");
+                }
+            }
+            unset($factory);
+            S::log('[INFO] Done: ' . basename($file), '-----------------------');
+        }
+    }
+
     public function getHandler()
     {
         if(isset($this->queryObject)) {
@@ -262,10 +317,10 @@ class Query extends SchemaObject
                     $C = Yaml::load($f);
                     S::$database = array();
                     if(isset($C[S::env()])) {
-                        S::$database = $C[S::env()]; 
+                        S::$database = $C[S::env()];
                     }
                     if(isset($C['all'])) {
-                        S::$database += $C['all']; 
+                        S::$database += $C['all'];
                     }
                     unset($C);
                 }

@@ -1,0 +1,6 @@
+Tecnodesign\StatusTeams!:
+  source: seeders/status_teams.json
+  attributes:
+    id: "id"
+    status: "status"
+    display_order: "display_order"

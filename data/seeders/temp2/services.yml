@@ -1,0 +1,25 @@
+Tecnodesign\Services!:
+  - id: 1
+    name: 'Admin'
+    category: 'admin'
+    type: 'sp'
+    url: '/a'
+    menu: 'Admin'
+    sso: 1
+    mfa: 1
+  - id: 2
+    name: 'Directory'
+    category: 'directory'
+    type: 'sp'
+    url: '/directory'
+    menu: 'First Services'
+    sso: 0
+    mfa: 1
+  - id: 3
+    name: 'API'
+    category: 'api'
+    type: 'sp'
+    url: 'https://api.first.org'
+    menu: 'First Services'
+    sso: 0
+    mfa: 1

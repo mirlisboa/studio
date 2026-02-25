@@ -1,0 +1,6 @@
+Tecnodesign\StatusIssues!:
+  source: seeders/status_issues.json
+  attributes:
+    id: "id"
+    status: "status"
+    display_order: "display_order"

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "type": "No Member",
+    "display_order": 1
+  },
+  {
+    "id": 2,
+    "type": "Full Member",
+    "display_order": 2
+  },
+  {
+    "id": 3,
+    "type": "Liaison",
+    "display_order": 4
+  },
+  {
+    "id": 4,
+    "type": "Associate",
+    "display_order": 3
+  }
+]

@@ -1,0 +1,6 @@
+Tecnodesign\Types!:
+  source: types.json
+  attributes:
+    id: "id"
+    type: "type"
+    display_order: "display_order"

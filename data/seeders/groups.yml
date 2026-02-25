@@ -1,0 +1,11 @@
+Tecnodesign\Groups!:
+  source: "https://swapi.dev/api/planets|results"
+  count: 5
+  attributes:
+    __key: name
+    name: "name"
+    synchronize: 0
+    allowed_members: "members"
+    display_members: "members"
+    display_group: "members"
+    status: 2

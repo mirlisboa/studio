@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "status": "Applying",
+    "display_order": 2
+  },
+  {
+    "id": 2,
+    "status": "Confirmed",
+    "display_order": 5
+  },
+  {
+    "id": 3,
+    "status": "Pending",
+    "display_order": 1
+  },
+  {
+    "id": 4,
+    "status": "Disabled",
+    "display_order": 6
+  },
+  {
+    "id": 5,
+    "status": "Accepted",
+    "display_order": 4
+  },
+  {
+    "id": 6,
+    "status": "On hold",
+    "display_order": 3
+  }
+]

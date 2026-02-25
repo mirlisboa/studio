@@ -1,0 +1,9 @@
+Tecnodesign\Teams!:
+  source: "https://swapi.dev/api/species|results"
+  count: 10
+  key: "team_short"
+  attributes:
+    __key: "team_short"
+    team_sort: "name"
+    team_name: "{{name}} {{designation}} Team"
+    status: 2
